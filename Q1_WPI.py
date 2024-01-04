@@ -13,16 +13,14 @@ def BM(V, a, b, c, d):
 # Extract volume data
 Vol = data['Volume(A^3)']
 
-# Extract Composition Hf
-Comp = data['Hf (%)']
 
 # Create a matrix to store minimum energies (outside of the loop)
-min_energies = np.zeros((len(list(data)[1:6]), 2))  # 5 rows for 5 compositions
+min_energies = np.zeros((len(list(data)[1:]), 2))  # 5 rows for 5 compositions
 
 # Perform fitting for each composition
 popt_list = []
 
-for i, composition in enumerate(list(data)[1:6]):  # Assuming compositions are in columns 2 to 6
+for i, composition in enumerate(list(data)[1:]):
     energy = data[composition]
 
     # Fit the Birch-Murnaghan equation
