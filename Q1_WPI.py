@@ -4,7 +4,7 @@ import numpy as np
 from scipy.optimize import curve_fit
 
 # Load data
-data = pd.read_excel('~/Downloads/data-1.xlsx')
+data = pd.read_excel('~/Downloads/data-1.xlsx') # Change to the correct directory
 
 # Birch-Murnaghan equation
 def BM(V, a, b, c, d):
@@ -61,13 +61,10 @@ for i, composition in enumerate(list(data)[1:6]):  # Assuming compositions are i
 
 # Figure 1 
 plt.figure(figsize=(8, 6))
-plt.title("Birch-Murnaghan Fit to Energy Data")  # Updated title
+plt.title("Birch-Murnaghan Fit to Energy Data")  
 
 for composition, popt in zip(list(data)[1:6], popt_list):
-    # Plot the data points first
     plt.scatter(Vol, data[composition], label=composition)
-
-    # Plot the fitted curve using the correct variable and order
     fit = BM(Vol, *popt)  # Use the same `volume` data for consistency
     plt.plot(Vol, fit, label=f'Birch Murnaghan Fit ({composition})')
     res=energy-fit
