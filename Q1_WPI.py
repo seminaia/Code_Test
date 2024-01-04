@@ -61,7 +61,7 @@ for i, composition in enumerate(list(data)[1:]):
 plt.figure(figsize=(8, 6))
 plt.title("Birch-Murnaghan Fit to Energy Data")  
 
-for composition, popt in zip(list(data)[1:6], popt_list):
+for composition, popt in zip(list(data)[1:], popt_list):
     plt.scatter(Vol, data[composition], label=composition)
     fit = BM(Vol, *popt)  # Use the same `volume` data for consistency
     plt.plot(Vol, fit, label=f'Birch Murnaghan Fit ({composition})')
