@@ -54,7 +54,6 @@ for i, composition in enumerate(list(data)[1:]):
     print(f"Fitting errors for composition '{composition}':")
     print(f"\tRMSE: {rmse:.4f} eV/atom")
     print(f"\tMAE: {mae:.4f} eV/atom")
-    print(f"Has {Comp[i]*100}% Hafnium: ")
     print(f"\tE0: {min_energies[i, 1]:.4f} eV/atom at volume {min_energies[i, 0]:.4f} A^3")
 
 # Figure 1 
