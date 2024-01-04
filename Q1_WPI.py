@@ -67,7 +67,6 @@ for composition, popt in zip(list(data)[1:6], popt_list):
     plt.scatter(Vol, data[composition], label=composition)
     fit = BM(Vol, *popt)  # Use the same `volume` data for consistency
     plt.plot(Vol, fit, label=f'Birch Murnaghan Fit ({composition})')
-    res=energy-fit
     
 plt.ylabel('Energy(eV/atom)')
 plt.xlabel('Volume(A^3)')
@@ -84,17 +83,13 @@ plt.scatter(V0, e0)
 
 # Mixing Energy
 # E_mix=(E_Hf+E_Zr-E_mixed)/2
-E1=min_energies[0,1]
-E2=min_energies[4,1]
-E_mixed=min_energies[2,1] # Equilibrium Energy at 50/50 Composition
+E1=min_energies[0,1] # Equilibrium Energy of pure HfTiO4 Composition
+E2=min_energies[4,1] # Equilibrium Energy of pure ZrTiO4 Composition 
+E_mixed=min_energies[2,1] # Equilibrium Energy at 0.5 HfTiO4 and 0.5 ZrTiO4 Composition
 E_mix= (E1+E2-E_mixed)/2
 print(f"Mixing Energies'{E_mix}'")
 
-# Customize the plot
+
 plt.xlabel('Volume (A^3')
 plt.ylabel('Minimum Energies (eV/atom)') #a grid for clarity
 plt.show()
-
-
-
-
