@@ -19,7 +19,7 @@ min_energies = np.zeros((len(list(data)[1:]), 2))  # 5 rows for 5 compositions
 # Perform fitting for each composition
 popt_list = []
 
-for i, composition in enumerate(list(data)[1:6]):  # Assuming compositions are in columns 2 to 6
+for i, composition in enumerate(list(data)[1:]):
     energy = data[composition]
 
     # Fit the Birch-Murnaghan equation
@@ -55,16 +55,13 @@ for i, composition in enumerate(list(data)[1:6]):  # Assuming compositions are i
     print(f"\tMAE: {mae:.4f} eV/atom")
     print(f"\tE0: {min_energies[i, 1]:.4f} eV/atom at volume {min_energies[i, 0]:.4f} A^3")
 
-# Figure 1 
+ 
 plt.figure(figsize=(8, 6))
-plt.title("Birch-Murnaghan Fit to Energy Data")  # Updated title
+plt.title("Birch-Murnaghan Fit to Energy Data")
 
-for composition, popt in zip(list(data)[1:6], popt_list):
-    # Plot the data points first
+for composition, popt in zip(list(data)[1:], popt_list):
     plt.scatter(Vol, data[composition], label=composition)
-
-    # Plot the fitted curve using the correct variable and order
-    fit = BM(Vol, *popt)  # Use the same `volume` data for consistency
+    fit = BM(Vol, *popt)
     plt.plot(Vol, fit, label=f'Birch Murnaghan Fit ({composition})')
     
 plt.ylabel('Energy(eV/atom)')
@@ -74,7 +71,5 @@ plt.xlabel('Volume(A^3/atom)')
 e0 = min_energies[:, 1]  # Extract minimum energies
 V0= min_energies[:,0]
 plt.scatter(V0, e0)
-
 plt.legend()
-
 plt.show()
